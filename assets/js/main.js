@@ -25,18 +25,50 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Simple form handler (replace with real backend)
-function handleSubmit(e) {
+// Contact form handler
+async function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.form-submit');
+  const form = e.target;
+  const btn = form.querySelector('.form-submit');
   const originalText = btn.textContent;
-  btn.textContent = btn.dataset.success || 'Request Sent!';
-  btn.style.background = '#16a34a';
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  const data = {
+    fname:   form.fname.value,
+    lname:   form.lname.value,
+    email:   form.email.value,
+    phone:   form.phone.value,
+    service: form.service.value,
+    message: form.message.value,
+  };
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      btn.textContent = 'Request Sent!';
+      btn.style.background = '#16a34a';
+      form.reset();
+    } else {
+      btn.textContent = 'Error — Try Again';
+      btn.style.background = '#dc2626';
+    }
+  } catch {
+    btn.textContent = 'Error — Try Again';
+    btn.style.background = '#dc2626';
+  }
+
   setTimeout(() => {
     btn.textContent = originalText;
     btn.style.background = '';
-    e.target.reset();
-  }, 3000);
+    btn.disabled = false;
+  }, 4000);
 }
 
 // Animate elements on scroll
