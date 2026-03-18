@@ -12,9 +12,6 @@ img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-/* ========== HIDDEN ELEMENTS ========== */
-.hero-stats, .stats-bar { display: none; }
-
 /* ========== VARIABLES ========== */
 :root {
   --brand: #9b0a2c;
@@ -773,3 +770,6 @@ ul { list-style: none; }
   .services-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
 }
+
+/* ========== HIDDEN ELEMENTS ========== */
+.hero-stats, .stats-bar { display: none !important; }
