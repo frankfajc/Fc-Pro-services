@@ -409,6 +409,49 @@ ul { list-style: none; }
 }
 .areas-list li:hover { background: var(--brand); color: #fff; }
 
+/* ========== THUMBTACK WIDGET ========== */
+.tt-widget-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+#tt-review-widget-star {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: var(--radius);
+  padding: 16px 28px;
+  box-shadow: var(--shadow);
+}
+#tt-review-widget-star .tt-logo {
+  height: 22px;
+  width: auto;
+}
+#tt-review-widget-star a {
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--dark);
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  padding: 0 16px;
+  white-space: nowrap;
+}
+#tt-review-widget-star a:hover { color: var(--brand); }
+#tt-dynamic {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+#tt-dynamic img { height: 18px; width: 18px; }
+#tt-dynamic span {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-left: 6px;
+}
+
 /* ========== CONTACT ========== */
 .contact { background: var(--gray); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
