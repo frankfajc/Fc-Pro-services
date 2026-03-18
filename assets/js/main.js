@@ -32,6 +32,29 @@ async function handleSubmit(e) {
   const btn = form.querySelector('.form-submit');
   const originalText = btn.textContent;
 
+  // Validate required fields
+  const required = [
+    { field: form.fname,    check: v => v.trim() !== '' },
+    { field: form.email,    check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+    { field: form.service,  check: v => v !== '' },
+    { field: form.message,  check: v => v.trim() !== '' },
+  ];
+  let valid = true;
+  required.forEach(({ field, check }) => {
+    const group = field.closest('.form-group');
+    if (!check(field.value)) {
+      group.classList.add('has-error');
+      valid = false;
+    } else {
+      group.classList.remove('has-error');
+    }
+  });
+  // Clear error on input
+  form.querySelectorAll('input, select, textarea').forEach(el => {
+    el.addEventListener('input', () => el.closest('.form-group')?.classList.remove('has-error'), { once: true });
+  });
+  if (!valid) return;
+
   btn.textContent = 'Sending...';
   btn.disabled = true;
 

@@ -604,6 +604,12 @@ ul { list-style: none; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .form-group { margin-bottom: 16px; }
 .form-group label { display: block; font-size: .8rem; font-weight: 600; margin-bottom: 6px; color: var(--dark); }
+.required-star { color: var(--brand); }
+.field-error { display: none; font-size: .78rem; color: #dc2626; margin-top: 4px; }
+.form-group.has-error input,
+.form-group.has-error select,
+.form-group.has-error textarea { border-color: #dc2626; }
+.form-group.has-error .field-error { display: block; }
 .form-group input,
 .form-group select,
 .form-group textarea {

@@ -49,9 +49,9 @@
       <h1>Expert Repairs.<br><span>Architect-Level</span><br>Precision.</h1>
       <p class="hero-text">We're not just handymen &mdash; we bring architectural expertise to every repair, renovation, and maintenance project in the greater Atlanta area.</p>
       <div class="hero-buttons">
-        <a href="tel:+17862084227" class="btn btn-primary">
-          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          (786) 208-4227
+        <a href="#contact" class="btn btn-primary">
+          <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get a Free Quote
         </a>
         <a href="#services" class="btn btn-outline">Our Services</a>
       </div>
@@ -464,40 +464,27 @@
         <p>Ready to start your project? Reach out to us directly or fill out the form.</p>
         <div class="contact-detail">
           <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b0a2c" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div><div class="contact-detail-label">Phone</div><div class="contact-detail-value"><a href="tel:+17862084227">(786) 208-4227</a></div></div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b0a2c" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          <div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:hello@fcproservices.com">hello@fcproservices.com</a></div></div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9b0a2c" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div><div class="contact-detail-label">Office</div><div class="contact-detail-value">123 Peachtree St NE<br>Atlanta, GA 30303</div></div>
+          <div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:frank.j@fcproservicesllc.com">frank.j@fcproservicesllc.com</a></div></div>
         </div>
       </div>
       <form class="contact-form" onsubmit="handleSubmit(event)">
         <div class="form-row">
-          <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" name="fname" placeholder="John" required></div>
+          <div class="form-group"><label for="fname">First Name <span class="required-star">*</span></label><input type="text" id="fname" name="fname" placeholder="John" required><span class="field-error">Please enter your first name.</span></div>
           <div class="form-group"><label for="lname">Last Name</label><input type="text" id="lname" name="lname" placeholder="Doe"></div>
         </div>
-        <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="john@example.com" required></div>
+        <div class="form-group"><label for="email">Email Address <span class="required-star">*</span></label><input type="email" id="email" name="email" placeholder="john@example.com" required><span class="field-error">Please enter a valid email address.</span></div>
         <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="(404) 555-0000"></div>
         <div class="form-group">
-          <label for="service">Service Needed</label>
-          <select id="service" name="service">
-            <option value="">Select a service...</option>
+          <label for="service">Service Needed <span class="required-star">*</span></label>
+          <select id="service" name="service" required><option value="">Select a service...</option>
             <option>Plumbing</option><option>Electrical</option><option>Painting</option><option>Drywall</option>
             <option>Carpentry</option><option>Assembly</option><option>Maintenance</option><option>Installations</option>
             <option>General Repair</option><option>Other</option>
-          </select>
+          </select><span class="field-error">Please select a service.</span>
         </div>
-        <div class="form-group"><label for="message">Project Details</label><textarea id="message" name="message" placeholder="Tell us about your project..."></textarea></div>
+        <div class="form-group"><label for="message">Project Details <span class="required-star">*</span></label><textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea><span class="field-error">Please describe your project.</span></div>
         <button type="submit" class="form-submit" data-success="Request Sent!">Send Request</button>
       </form>
     </div>
@@ -550,9 +537,9 @@
 </footer>
 
 <!-- FLOATING CTA -->
-<a href="tel:+17862084227" class="float-cta">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-  Call Now
+<a href="#contact" class="float-cta">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+  Get a Quote
 </a>
 
 <script src="assets/js/main.js"></script>
