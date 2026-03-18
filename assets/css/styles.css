@@ -409,12 +409,17 @@ ul { list-style: none; }
 }
 .areas-list li:hover { background: var(--brand); color: #fff; }
 
-/* ========== THUMBTACK WIDGET ========== */
+/* ========== THUMBTACK WIDGETS ========== */
 .tt-widget-wrapper {
   display: flex;
   justify-content: center;
+  align-items: stretch;
+  gap: 24px;
   margin-top: 48px;
+  flex-wrap: wrap;
 }
+
+/* --- Star widget --- */
 #tt-review-widget-star {
   display: flex;
   align-items: center;
@@ -439,18 +444,78 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 #tt-review-widget-star a:hover { color: var(--brand); }
-#tt-dynamic {
+#tt-review-widget-star #tt-dynamic {
   display: flex;
   align-items: center;
   gap: 4px;
 }
-#tt-dynamic img { height: 18px; width: 18px; }
-#tt-dynamic span {
+#tt-review-widget-star #tt-dynamic img { height: 18px; width: 18px; }
+#tt-review-widget-star #tt-dynamic span {
   font-size: .85rem;
   font-weight: 600;
   color: var(--text-light);
   margin-left: 6px;
 }
+
+/* --- Review card widget --- */
+#tt-review-widget-one {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  box-shadow: var(--shadow);
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#tt-review-widget-one > img {
+  height: 22px;
+  width: auto;
+}
+#tt-review-widget-one #tt-dynamic {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+#tt-review-widget-one .tt-left img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+#tt-review-widget-one .tt-right { flex: 1; }
+#tt-review-widget-one .tt-name {
+  font-weight: 700;
+  font-size: .95rem;
+  margin-bottom: 4px;
+  color: var(--dark);
+}
+#tt-review-widget-one .tt-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 8px;
+}
+#tt-review-widget-one .tt-stars img { height: 15px; width: 15px; }
+#tt-review-widget-one .tt-stars span {
+  font-size: .75rem;
+  color: var(--text-light);
+  margin-left: 4px;
+}
+#tt-review-widget-one .tt-right p {
+  font-size: .9rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+#tt-review-widget-one .tt-right a {
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+#tt-review-widget-one .tt-right a:hover { text-decoration: underline; }
 
 /* ========== CONTACT ========== */
 .contact { background: var(--gray); }
