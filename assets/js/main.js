@@ -50,9 +50,91 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.service-card, .sector-card, .testimonial-card, .why-feature, .project-card').forEach(el => {
+document.querySelectorAll('.service-card, .sector-card, .why-feature, .project-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'all 0.6s ease';
   observer.observe(el);
 });
+
+// Testimonials Carousel
+(function () {
+  const track    = document.getElementById('carTrack');
+  const viewport = document.getElementById('carViewport');
+  const btnPrev  = document.getElementById('carPrev');
+  const btnNext  = document.getElementById('carNext');
+  const dotsWrap = document.getElementById('carDots');
+  if (!track) return;
+
+  const cards  = Array.from(track.querySelectorAll('.testimonial-card'));
+  const GAP    = 24;
+  let current  = 0;
+  let autoTimer;
+
+  function visible() { return window.innerWidth < 768 ? 1 : 3; }
+
+  function setWidths() {
+    const vc = visible();
+    const w  = (viewport.offsetWidth - GAP * (vc - 1)) / vc;
+    cards.forEach(c => c.style.width = w + 'px');
+  }
+
+  function maxIndex() { return cards.length - visible(); }
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    const total = maxIndex() + 1;
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('button');
+      d.className = 'car-dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function updateDots() {
+    dotsWrap.querySelectorAll('.car-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current));
+  }
+
+  function goTo(index) {
+    const vc = visible();
+    current = Math.max(0, Math.min(index, maxIndex()));
+    const cardW = (viewport.offsetWidth - GAP * (vc - 1)) / vc;
+    track.style.transform = `translateX(-${current * (cardW + GAP)}px)`;
+    btnPrev.disabled = current === 0;
+    btnNext.disabled = current === maxIndex();
+    updateDots();
+  }
+
+  function startAuto() {
+    autoTimer = setInterval(() => {
+      goTo(current >= maxIndex() ? 0 : current + 1);
+    }, 4000);
+  }
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    startAuto();
+  }
+
+  btnPrev.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  btnNext.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+  viewport.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  viewport.addEventListener('mouseleave', startAuto);
+
+  // Touch swipe
+  let touchStartX = 0;
+  viewport.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  viewport.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) { goTo(diff > 0 ? current + 1 : current - 1); resetAuto(); }
+  });
+
+  window.addEventListener('resize', () => { setWidths(); buildDots(); goTo(current); });
+
+  setWidths();
+  buildDots();
+  goTo(0);
+  startAuto();
+})();
